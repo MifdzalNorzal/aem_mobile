@@ -5,7 +5,7 @@ import '../../config/constants.dart';
 import '../../config/extensions/build_context_ext.dart';
 import '../../controllers/auth_controller.dart';
 import '../../views/widgets/app_button.dart';
-import '../../views/widgets/app_dialog.dart';
+// import '../../views/widgets/app_dialog.dart'; // restored when real login is re-enabled
 import '../../views/widgets/app_input_field.dart';
 
 class Login extends StatefulWidget {
@@ -31,24 +31,26 @@ class _LoginState extends State<Login> {
   Future<void> _onLogin() async {
     if (!_formKey.currentState!.validate()) return;
 
-    final success = await context.read<AuthController>().login(
-      _emailController.text.trim(),
-      _passwordController.text,
-    );
+    // BYPASS: Remove the next line and uncomment the block below to restore real login
+    Navigator.pushReplacementNamed(context, '/home'); return;
 
-    if (!mounted) return;
-
-    if (success) {
-      Navigator.pushReplacementNamed(context, '/home');
-    } else {
-      final error = context.read<AuthController>().error;
-      AppDialog.show(
-        context,
-        title: context.l10n.loginFailed,
-        message: error ?? context.l10n.loginFailedMessage,
-        buttonLabel: context.l10n.ok,
-      );
-    }
+    // --- REAL LOGIN (uncomment to restore) ---
+    // final success = await context.read<AuthController>().login(
+    //   _emailController.text.trim(),
+    //   _passwordController.text,
+    // );
+    // if (!mounted) return;
+    // if (success) {
+    //   Navigator.pushReplacementNamed(context, '/home');
+    // } else {
+    //   final error = context.read<AuthController>().error;
+    //   AppDialog.show(
+    //     context,
+    //     title: context.l10n.loginFailed,
+    //     message: error ?? context.l10n.loginFailedMessage,
+    //     buttonLabel: context.l10n.ok,
+    //   );
+    // }
   }
 
   @override

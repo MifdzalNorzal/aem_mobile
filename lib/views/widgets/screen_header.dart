@@ -8,15 +8,18 @@ class ScreenHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final statusBarHeight = MediaQuery.of(context).padding.top;
     return Container(
-      color: AppColors.primary,
-      width: double.infinity,
-      padding: EdgeInsets.only(
-        top: MediaQuery.of(context).padding.top + 20,
-        bottom: 28,
-        left: 24,
-        right: 24,
+      height: statusBarHeight + 140,
+      padding: EdgeInsets.only(top: statusBarHeight + 30, left: 24, right: 24),
+      alignment: Alignment.topCenter,
+      decoration: const BoxDecoration(
+        color: AppColors.primary,
+        borderRadius: BorderRadius.vertical(
+          bottom: Radius.circular(30),
+        ),
       ),
+      width: double.infinity,
       child: Text(
         title,
         style: const TextStyle(
