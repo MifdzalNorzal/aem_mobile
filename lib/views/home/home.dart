@@ -4,7 +4,7 @@ import '../../config/color.dart';
 import '../../config/extensions/build_context_ext.dart';
 import '../../controllers/dashboard_controller.dart';
 import '../widgets/chart_card.dart';
-import '../widgets/screen_header.dart';
+import '../widgets/screen_headers.dart';
 import '../widgets/charts/bar_chart_widget.dart';
 import '../widgets/charts/donut_chart_widget.dart';
 
@@ -31,7 +31,17 @@ class _HomeState extends State<Home> {
       backgroundColor: AppColors.background,
       body: Column(
         children: [
-          ScreenHeader(title: l10n.helloAlex),
+          ScreenHeader(
+            child: Text(
+              l10n.helloAlex,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 26,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
           Expanded(
             child: Consumer<DashboardController>(
               builder: (context, dashboard, _) {
