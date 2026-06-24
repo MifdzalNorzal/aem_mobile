@@ -1,0 +1,25 @@
+name: aem_mobile
+description: "DevCorp Mobile - AEM Enersol Technical Assessment"
+publish_to: 'none'
+
+version: 1.0.4+1
+
+environment:
+  sdk: ^3.8.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  flutter_riverpod: ^2.6.1
+  dio: ^5.7.0
+  fl_chart: ^0.70.2
+  flutter_secure_storage: ^9.2.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
