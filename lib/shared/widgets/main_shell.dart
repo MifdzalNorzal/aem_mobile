@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../core/constants/app_colors.dart';
-import '../../core/constants/app_strings.dart';
+import '../../core/extensions/build_context_ext.dart';
 import '../../features/home/screens/home_screen.dart';
 import '../../features/info/screens/info_screen.dart';
 import '../../features/settings/screens/settings_screen.dart';
@@ -23,6 +23,8 @@ class _MainShellState extends State<MainShell> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return Scaffold(
       body: IndexedStack(
         index: _currentIndex,
@@ -34,21 +36,21 @@ class _MainShellState extends State<MainShell> {
         backgroundColor: Colors.white,
         indicatorColor: AppColors.primary.withAlpha(30),
         labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
-        destinations: const [
+        destinations: [
           NavigationDestination(
-            icon: Icon(Icons.home_outlined),
-            selectedIcon: Icon(Icons.home, color: AppColors.primary),
-            label: AppStrings.navHome,
+            icon: const Icon(Icons.home_outlined),
+            selectedIcon: const Icon(Icons.home, color: AppColors.primary),
+            label: l10n.navHome,
           ),
           NavigationDestination(
-            icon: Icon(Icons.info_outline),
-            selectedIcon: Icon(Icons.info, color: AppColors.primary),
-            label: AppStrings.navInfo,
+            icon: const Icon(Icons.info_outline),
+            selectedIcon: const Icon(Icons.info, color: AppColors.primary),
+            label: l10n.navInfo,
           ),
           NavigationDestination(
-            icon: Icon(Icons.settings_outlined),
-            selectedIcon: Icon(Icons.settings, color: AppColors.primary),
-            label: AppStrings.navSettings,
+            icon: const Icon(Icons.settings_outlined),
+            selectedIcon: const Icon(Icons.settings, color: AppColors.primary),
+            label: l10n.navSettings,
           ),
         ],
       ),

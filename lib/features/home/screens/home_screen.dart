@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fl_chart/fl_chart.dart';
 import '../../../core/constants/app_colors.dart';
-import '../../../core/constants/app_strings.dart';
+import '../../../core/extensions/build_context_ext.dart';
 import '../providers/dashboard_provider.dart';
 import '../../../models/chart_bar_model.dart';
 import '../../../models/chart_donut_model.dart';
@@ -13,6 +13,7 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final dashboardAsync = ref.watch(dashboardProvider);
+    final l10n = context.l10n;
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -30,7 +31,7 @@ class HomeScreen extends ConsumerWidget {
                 child: Column(
                   children: [
                     _ChartCard(
-                      title: AppStrings.statistics,
+                      title: l10n.statistics,
                       child: SizedBox(
                         height: 200,
                         child: _BarChartWidget(data: dashboard.chartBar),
@@ -38,7 +39,7 @@ class HomeScreen extends ConsumerWidget {
                     ),
                     const SizedBox(height: 16),
                     _ChartCard(
-                      title: AppStrings.distribution,
+                      title: l10n.distribution,
                       child: SizedBox(
                         height: 220,
                         child: _DonutChartWidget(data: dashboard.chartDonut),
@@ -64,9 +65,9 @@ class HomeScreen extends ConsumerWidget {
         left: 24,
         right: 24,
       ),
-      child: const Text(
-        AppStrings.helloAlex,
-        style: TextStyle(
+      child: Text(
+        context.l10n.helloAlex,
+        style: const TextStyle(
           color: Colors.white,
           fontSize: 26,
           fontWeight: FontWeight.bold,
@@ -307,9 +308,9 @@ class _ErrorView extends StatelessWidget {
         children: [
           const Icon(Icons.error_outline, size: 52, color: Colors.grey),
           const SizedBox(height: 12),
-          const Text(
-            AppStrings.failedLoadDashboard,
-            style: TextStyle(color: AppColors.textGrey, fontSize: 15),
+          Text(
+            context.l10n.failedLoadDashboard,
+            style: const TextStyle(color: AppColors.textGrey, fontSize: 15),
           ),
           const SizedBox(height: 16),
           ElevatedButton(
@@ -318,7 +319,7 @@ class _ErrorView extends StatelessWidget {
               backgroundColor: AppColors.primary,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
             ),
-            child: const Text(AppStrings.retry, style: TextStyle(color: Colors.white)),
+            child: Text(context.l10n.retry, style: const TextStyle(color: Colors.white)),
           ),
         ],
       ),

@@ -1,0 +1,108 @@
+{
+  "@@locale": "en",
+
+  "appName": "DevCorp",
+  "@appName": { "description": "Application name shown in the logo" },
+
+  "appVersion": "v1.0.4",
+  "@appVersion": { "description": "Static app version string" },
+
+  "welcomeBack": "Welcome Back",
+  "@welcomeBack": { "description": "Login screen title" },
+
+  "emailHint": "Email",
+  "@emailHint": { "description": "Email input placeholder" },
+
+  "passwordHint": "Password",
+  "@passwordHint": { "description": "Password input placeholder" },
+
+  "loginButton": "Login",
+  "@loginButton": { "description": "Login button label" },
+
+  "forgotPassword": "Forgot Password?",
+  "@forgotPassword": { "description": "Forgot password link" },
+
+  "noAccount": "Don't have an account? ",
+  "@noAccount": { "description": "Sign up prompt prefix" },
+
+  "signUp": "Sign Up",
+  "@signUp": { "description": "Sign up link label" },
+
+  "emailRequired": "Email is required",
+  "@emailRequired": { "description": "Email validation: empty" },
+
+  "emailInvalid": "Enter a valid email",
+  "@emailInvalid": { "description": "Email validation: format invalid" },
+
+  "passwordRequired": "Password is required",
+  "@passwordRequired": { "description": "Password validation: empty" },
+
+  "loginFailed": "Login Failed",
+  "@loginFailed": { "description": "Login error dialog title" },
+
+  "loginFailedMessage": "Please check your credentials and try again.",
+  "@loginFailedMessage": { "description": "Login error dialog body" },
+
+  "ok": "OK",
+  "@ok": { "description": "Generic confirmation button" },
+
+  "helloAlex": "Hello, Alex",
+  "@helloAlex": { "description": "Home screen greeting header" },
+
+  "statistics": "Statistics",
+  "@statistics": { "description": "Bar chart card title" },
+
+  "distribution": "Distribution",
+  "@distribution": { "description": "Donut chart card title" },
+
+  "failedLoadDashboard": "Failed to load dashboard",
+  "@failedLoadDashboard": { "description": "Home screen error message" },
+
+  "retry": "Retry",
+  "@retry": { "description": "Retry button label" },
+
+  "search": "Search",
+  "@search": { "description": "Search bar placeholder" },
+
+  "failedLoadEmployees": "Failed to load employees",
+  "@failedLoadEmployees": { "description": "Info screen error message" },
+
+  "noResultsFound": "No results found",
+  "@noResultsFound": { "description": "Info screen empty search result" },
+
+  "defaultDepartment": "Department",
+  "@defaultDepartment": { "description": "Fallback department label for employees" },
+
+  "defaultRole": "Senior Developer - iOS",
+  "@defaultRole": { "description": "Fallback role label for employees" },
+
+  "profileName": "Alex Johnson",
+  "@profileName": { "description": "Hardcoded profile name on settings screen" },
+
+  "profileRole": "Senior Developer",
+  "@profileRole": { "description": "Hardcoded profile role on settings screen" },
+
+  "editProfile": "Edit Profile",
+  "@editProfile": { "description": "Settings menu item" },
+
+  "notifications": "Notifications",
+  "@notifications": { "description": "Settings toggle label" },
+
+  "darkMode": "Dark Mode",
+  "@darkMode": { "description": "Settings toggle label" },
+
+  "appVersionLabel": "App Version",
+  "@appVersionLabel": { "description": "Settings row label for app version" },
+
+  "logOut": "Log Out",
+  "@logOut": { "description": "Logout button label" },
+
+  "navHome": "Home",
+  "@navHome": { "description": "Bottom nav: home tab" },
+
+  "navInfo": "Info",
+  "@navInfo": { "description": "Bottom nav: info tab" },
+
+  "navSettings": "Settings",
+  "@navSettings": { "description": "Bottom nav: settings tab" }
+}

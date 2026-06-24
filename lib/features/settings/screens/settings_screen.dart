@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/constants/app_colors.dart';
-import '../../../core/constants/app_strings.dart';
+import '../../../core/extensions/build_context_ext.dart';
 import '../providers/settings_provider.dart';
 import '../../auth/providers/auth_provider.dart';
 import '../../auth/screens/login_screen.dart';
@@ -12,6 +12,7 @@ class SettingsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final settings = ref.watch(settingsProvider);
+    final l10n = context.l10n;
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -27,7 +28,7 @@ class SettingsScreen extends ConsumerWidget {
                     children: [
                       _SettingsTile(
                         icon: Icons.edit_outlined,
-                        label: AppStrings.editProfile,
+                        label: l10n.editProfile,
                         trailing: const Icon(
                           Icons.chevron_right,
                           color: AppColors.textGrey,
@@ -37,7 +38,7 @@ class SettingsScreen extends ConsumerWidget {
                       const _Divider(),
                       _SettingsTile(
                         icon: Icons.notifications_outlined,
-                        label: AppStrings.notifications,
+                        label: l10n.notifications,
                         trailing: Switch(
                           value: settings.notificationsEnabled,
                           onChanged: (_) =>
@@ -48,7 +49,7 @@ class SettingsScreen extends ConsumerWidget {
                       const _Divider(),
                       _SettingsTile(
                         icon: Icons.dark_mode_outlined,
-                        label: AppStrings.darkMode,
+                        label: l10n.darkMode,
                         trailing: Switch(
                           value: settings.darkModeEnabled,
                           onChanged: (_) =>
@@ -59,10 +60,10 @@ class SettingsScreen extends ConsumerWidget {
                       const _Divider(),
                       _SettingsTile(
                         icon: Icons.info_outline,
-                        label: AppStrings.appVersionLabel,
-                        trailing: const Text(
-                          AppStrings.appVersion,
-                          style: TextStyle(color: AppColors.textGrey, fontSize: 14),
+                        label: l10n.appVersionLabel,
+                        trailing: Text(
+                          l10n.appVersion,
+                          style: const TextStyle(color: AppColors.textGrey, fontSize: 14),
                         ),
                       ),
                     ],
@@ -98,18 +99,18 @@ class SettingsScreen extends ConsumerWidget {
             backgroundColor: Colors.white.withAlpha(40),
           ),
           const SizedBox(height: 14),
-          const Text(
-            AppStrings.profileName,
-            style: TextStyle(
+          Text(
+            context.l10n.profileName,
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
           ),
           const SizedBox(height: 4),
-          const Text(
-            AppStrings.profileRole,
-            style: TextStyle(
+          Text(
+            context.l10n.profileRole,
+            style: const TextStyle(
               color: Colors.white70,
               fontSize: 14,
             ),
@@ -225,12 +226,12 @@ class _LogoutButton extends StatelessWidget {
         child: InkWell(
           onTap: onTap,
           borderRadius: BorderRadius.circular(14),
-          child: const Padding(
-            padding: EdgeInsets.symmetric(vertical: 16),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16),
             child: Text(
-              AppStrings.logOut,
+              context.l10n.logOut,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 color: AppColors.logoutText,
                 fontSize: 16,
                 fontWeight: FontWeight.w600,

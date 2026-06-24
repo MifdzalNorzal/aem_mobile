@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/constants/app_colors.dart';
-import '../../../core/constants/app_strings.dart';
+import '../../../core/extensions/build_context_ext.dart';
 import '../providers/auth_provider.dart';
 import '../../../shared/widgets/main_shell.dart';
 
@@ -44,13 +44,13 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
       final error = ref.read(authProvider).error;
       showDialog(
         context: context,
-        builder: (_) => AlertDialog(
-          title: const Text(AppStrings.loginFailed),
-          content: Text(error ?? AppStrings.loginFailedMessage),
+        builder: (ctx) => AlertDialog(
+          title: Text(ctx.l10n.loginFailed),
+          content: Text(error ?? ctx.l10n.loginFailedMessage),
           actions: [
             TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text(AppStrings.ok),
+              onPressed: () => Navigator.pop(ctx),
+              child: Text(ctx.l10n.ok),
             ),
           ],
         ),
@@ -61,6 +61,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final isLoading = ref.watch(authProvider).isLoading;
+    final l10n = context.l10n;
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -76,9 +77,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   const SizedBox(height: 40),
                   _DevCorpLogo(),
                   const SizedBox(height: 40),
-                  const Text(
-                    AppStrings.welcomeBack,
-                    style: TextStyle(
+                  Text(
+                    l10n.welcomeBack,
+                    style: const TextStyle(
                       fontSize: 26,
                       fontWeight: FontWeight.bold,
                       color: AppColors.textDark,
@@ -87,20 +88,20 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   const SizedBox(height: 32),
                   _InputField(
                     controller: _emailController,
-                    hint: AppStrings.emailHint,
+                    hint: l10n.emailHint,
                     prefixIcon: Icons.email_outlined,
                     keyboardType: TextInputType.emailAddress,
                     validator: (v) {
-                      if (v == null || v.isEmpty) return AppStrings.emailRequired;
+                      if (v == null || v.isEmpty) return l10n.emailRequired;
                       final emailReg = RegExp(r'^[\w\-\.]+@([\w\-]+\.)+[\w\-]{2,4}$');
-                      if (!emailReg.hasMatch(v.trim())) return AppStrings.emailInvalid;
+                      if (!emailReg.hasMatch(v.trim())) return l10n.emailInvalid;
                       return null;
                     },
                   ),
                   const SizedBox(height: 14),
                   _InputField(
                     controller: _passwordController,
-                    hint: AppStrings.passwordHint,
+                    hint: l10n.passwordHint,
                     prefixIcon: Icons.lock_outline,
                     obscureText: _obscurePassword,
                     suffixIcon: IconButton(
@@ -114,7 +115,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       onPressed: () => setState(() => _obscurePassword = !_obscurePassword),
                     ),
                     validator: (v) {
-                      if (v == null || v.isEmpty) return AppStrings.passwordRequired;
+                      if (v == null || v.isEmpty) return l10n.passwordRequired;
                       return null;
                     },
                   ),
@@ -141,9 +142,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                 strokeWidth: 2.5,
                               ),
                             )
-                          : const Text(
-                              AppStrings.loginButton,
-                              style: TextStyle(
+                          : Text(
+                              l10n.loginButton,
+                              style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
@@ -154,24 +155,24 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   const SizedBox(height: 16),
                   TextButton(
                     onPressed: () {},
-                    child: const Text(
-                      AppStrings.forgotPassword,
-                      style: TextStyle(color: AppColors.textGrey, fontSize: 14),
+                    child: Text(
+                      l10n.forgotPassword,
+                      style: const TextStyle(color: AppColors.textGrey, fontSize: 14),
                     ),
                   ),
                   const SizedBox(height: 40),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
-                        AppStrings.noAccount,
-                        style: TextStyle(color: AppColors.textGrey, fontSize: 14),
+                      Text(
+                        l10n.noAccount,
+                        style: const TextStyle(color: AppColors.textGrey, fontSize: 14),
                       ),
                       GestureDetector(
                         onTap: () {},
-                        child: const Text(
-                          AppStrings.signUp,
-                          style: TextStyle(
+                        child: Text(
+                          l10n.signUp,
+                          style: const TextStyle(
                             color: AppColors.primary,
                             fontWeight: FontWeight.w600,
                             fontSize: 14,
@@ -208,10 +209,10 @@ class _DevCorpLogo extends StatelessWidget {
           ),
         ],
       ),
-      child: const Center(
+      child: Center(
         child: Text(
-          AppStrings.appName,
-          style: TextStyle(
+          context.l10n.appName,
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 15,
             fontWeight: FontWeight.bold,

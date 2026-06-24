@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:aem_mobile/l10n/app_localizations.dart';
 import 'core/constants/app_colors.dart';
 import 'core/storage/storage_service.dart';
 import 'features/auth/screens/login_screen.dart';
@@ -17,6 +18,8 @@ class App extends ConsumerWidget {
     return MaterialApp(
       title: 'DevCorp',
       debugShowCheckedModeBanner: false,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
         useMaterial3: true,

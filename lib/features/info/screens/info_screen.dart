@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/constants/app_colors.dart';
-import '../../../core/constants/app_strings.dart';
+import '../../../core/extensions/build_context_ext.dart';
 import '../../../features/home/providers/dashboard_provider.dart';
 import '../../../models/table_user_model.dart';
 
@@ -57,19 +57,19 @@ class _InfoScreenState extends ConsumerState<InfoScreen> {
                 loading: () => const Center(
                   child: CircularProgressIndicator(color: AppColors.primary),
                 ),
-                error: (_, __) => const Center(
+                error: (_, __) => Center(
                   child: Text(
-                    AppStrings.failedLoadEmployees,
-                    style: TextStyle(color: AppColors.textGrey),
+                    context.l10n.failedLoadEmployees,
+                    style: const TextStyle(color: AppColors.textGrey),
                   ),
                 ),
                 data: (dashboard) {
                   final users = _filter(dashboard.tableUsers);
                   if (users.isEmpty) {
-                    return const Center(
+                    return Center(
                       child: Text(
-                        AppStrings.noResultsFound,
-                        style: TextStyle(color: AppColors.textGrey),
+                        context.l10n.noResultsFound,
+                        style: const TextStyle(color: AppColors.textGrey),
                       ),
                     );
                   }
@@ -109,7 +109,7 @@ class _SearchBar extends StatelessWidget {
         onChanged: onChanged,
         style: const TextStyle(color: Colors.black87),
         decoration: InputDecoration(
-          hintText: AppStrings.search,
+          hintText: context.l10n.search,
           hintStyle: const TextStyle(color: Colors.grey),
           prefixIcon: const Icon(Icons.search, color: Colors.grey),
           suffixIcon: const Icon(Icons.tune_outlined, color: Colors.grey),
@@ -167,11 +167,11 @@ class _EmployeeTile extends StatelessWidget {
           children: [
             const SizedBox(height: 2),
             Text(
-              user.department ?? AppStrings.defaultDepartment,
+              user.department ?? context.l10n.defaultDepartment,
               style: const TextStyle(fontSize: 12, color: AppColors.textGrey),
             ),
             Text(
-              user.role ?? AppStrings.defaultRole,
+              user.role ?? context.l10n.defaultRole,
               style: const TextStyle(fontSize: 12, color: AppColors.textGrey),
             ),
           ],
