@@ -43,7 +43,7 @@ class _HomeState extends State<Home> {
     );
 
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Consumer<DashboardController>(
         builder: (context, dashboard, _) {
           if (dashboard.isLoading) {
@@ -73,12 +73,12 @@ class _HomeState extends State<Home> {
           final data = dashboard.data;
           return Stack(
             children: [
-              // Header sits behind — cards scroll over it
+              
               header,
               SingleChildScrollView(
                 child: Column(
                   children: [
-                    // Transparent spacer so header text is visible at rest
+                   
                     SizedBox(height: contentTopOffset),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(16, 0, 16, 24),

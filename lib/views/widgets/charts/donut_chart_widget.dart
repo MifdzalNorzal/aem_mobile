@@ -73,9 +73,9 @@ class DonutChartWidget extends StatelessWidget {
                     Flexible(
                       child: Text(
                         items[i].label ?? 'Item ${i + 1}',
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 12,
-                          color: AppColors.textDark,
+                          color: Theme.of(context).colorScheme.onSurface,
                         ),
                         overflow: TextOverflow.ellipsis,
                       ),

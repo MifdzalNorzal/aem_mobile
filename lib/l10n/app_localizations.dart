@@ -73,16 +73,7 @@ abstract class AppLocalizations {
   static const LocalizationsDelegate<AppLocalizations> delegate =
       _AppLocalizationsDelegate();
 
-  /// A list of this localizations delegate along with the default localizations
-  /// delegates.
-  ///
-  /// Returns a list of localizations delegates containing this delegate along with
-  /// GlobalMaterialLocalizations.delegate, GlobalCupertinoLocalizations.delegate,
-  /// and GlobalWidgetsLocalizations.delegate.
-  ///
-  /// Additional delegates can be added by appending to this list in
-  /// MaterialApp. This list does not have to be used at all if a custom list
-  /// of delegates is preferred or required.
+ 
   static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
       <LocalizationsDelegate<dynamic>>[
         delegate,
@@ -91,144 +82,143 @@ abstract class AppLocalizations {
         GlobalWidgetsLocalizations.delegate,
       ];
 
-  /// A list of this localizations delegate's supported locales.
+  
   static const List<Locale> supportedLocales = <Locale>[Locale('en')];
 
-  /// Application name shown in the logo
-  ///
-  /// In en, this message translates to:
+  
+  /// in english, this message translates to:
   /// **'DevCorp'**
   String get appName;
 
   /// Static app version string
   ///
-  /// In en, this message translates to:
+  /// in english, this message translates to:
   /// **'v1.0.4'**
   String get appVersion;
 
   /// Login screen title
   ///
-  /// In en, this message translates to:
+  /// in english, this message translates to:
   /// **'Welcome Back'**
   String get welcomeBack;
 
   /// Email input placeholder
   ///
-  /// In en, this message translates to:
+  /// in english, this message translates to:
   /// **'Email'**
   String get emailHint;
 
   /// Password input placeholder
   ///
-  /// In en, this message translates to:
+  /// in english, this message translates to:
   /// **'Password'**
   String get passwordHint;
 
   /// Login button label
   ///
-  /// In en, this message translates to:
+  /// in english, this message translates to:
   /// **'Login'**
   String get loginButton;
 
   /// Forgot password link
   ///
-  /// In en, this message translates to:
+  /// in english, this message translates to:
   /// **'Forgot Password?'**
   String get forgotPassword;
 
   /// Sign up prompt prefix
   ///
-  /// In en, this message translates to:
+  /// in english, this message translates to:
   /// **'Don\'t have an account? '**
   String get noAccount;
 
   /// Sign up link label
   ///
-  /// In en, this message translates to:
+  /// in english, this message translates to:
   /// **'Sign Up'**
   String get signUp;
 
   /// Email validation: empty
   ///
-  /// In en, this message translates to:
+  /// in english, this message translates to:
   /// **'Email is required'**
   String get emailRequired;
 
   /// Email validation: format invalid
   ///
-  /// In en, this message translates to:
+  /// in english, this message translates to:
   /// **'Enter a valid email'**
   String get emailInvalid;
 
   /// Password validation: empty
   ///
-  /// In en, this message translates to:
+  /// in english, this message translates to:
   /// **'Password is required'**
   String get passwordRequired;
 
   /// Login error dialog title
   ///
-  /// In en, this message translates to:
+  /// in english, this message translates to:
   /// **'Login Failed'**
   String get loginFailed;
 
   /// Login error dialog body
   ///
-  /// In en, this message translates to:
+  /// in english, this message translates to:
   /// **'Please check your credentials and try again.'**
   String get loginFailedMessage;
 
   /// Generic confirmation button
   ///
-  /// In en, this message translates to:
+  /// in english, this message translates to:
   /// **'OK'**
   String get ok;
 
   /// Home screen greeting header
   ///
-  /// In en, this message translates to:
+  /// in english, this message translates to:
   /// **'Hello, Alex'**
   String get helloAlex;
 
   /// Bar chart card title
   ///
-  /// In en, this message translates to:
+  /// in english, this message translates to:
   /// **'Statistics'**
   String get statistics;
 
   /// Donut chart card title
   ///
-  /// In en, this message translates to:
+  /// in english, this message translates to:
   /// **'Distribution'**
   String get distribution;
 
   /// Home screen error message
   ///
-  /// In en, this message translates to:
+  /// in english, this message translates to:
   /// **'Failed to load dashboard'**
   String get failedLoadDashboard;
 
   /// Retry button label
   ///
-  /// In en, this message translates to:
+  /// in english, this message translates to:
   /// **'Retry'**
   String get retry;
 
   /// Search bar placeholder
   ///
-  /// In en, this message translates to:
+  /// in english, this message translates to:
   /// **'Search'**
   String get search;
 
   /// Info screen error message
   ///
-  /// In en, this message translates to:
+  /// in english, this message translates to:
   /// **'Failed to load employees'**
   String get failedLoadEmployees;
 
   /// Info screen empty search result
   ///
-  /// In en, this message translates to:
+  /// in english, this message translates to:
   /// **'No results found'**
   String get noResultsFound;
 
@@ -288,19 +278,19 @@ abstract class AppLocalizations {
 
   /// Bottom nav: home tab
   ///
-  /// In en, this message translates to:
+  /// in english, this message translates to:
   /// **'Home'**
   String get navHome;
 
   /// Bottom nav: info tab
   ///
-  /// In en, this message translates to:
+  /// in english, this message translates to:
   /// **'Info'**
   String get navInfo;
 
   /// Bottom nav: settings tab
   ///
-  /// In en, this message translates to:
+  /// in english, this message translates to:
   /// **'Settings'**
   String get navSettings;
 }

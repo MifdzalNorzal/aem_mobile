@@ -45,10 +45,13 @@ class _AppMaterialState extends State<_AppMaterial> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = context.watch<SettingsController>().darkModeEnabled;
     return MaterialApp(
       title: 'DevCorp',
       debugShowCheckedModeBanner: false,
-      theme: theme(context),
+      theme: lightTheme(context),
+      darkTheme: darkTheme(context),
+      themeMode: isDark ? ThemeMode.dark : ThemeMode.light,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       onGenerateRoute: RouteGenerator.generateRoute,

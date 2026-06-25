@@ -54,9 +54,11 @@ class _BottomNavigationState extends State<BottomNavigation> {
         currentIndex: _currentIndex,
         onTap: _onTabTap,
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
         selectedItemColor: AppColors.primary,
-        unselectedItemColor: Colors.black54,
+        unselectedItemColor: Theme.of(context).brightness == Brightness.dark
+            ? Colors.white54
+            : Colors.black54,
         elevation: 8,
         selectedLabelStyle: const TextStyle(
           fontWeight: FontWeight.w600,

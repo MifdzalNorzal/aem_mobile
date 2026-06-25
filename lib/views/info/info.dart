@@ -44,7 +44,7 @@ class _InfoState extends State<Info> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Column(
         children: [
           ScreenHeader2(
@@ -115,7 +115,7 @@ class _SearchBar extends StatelessWidget {
         prefixIcon: const Icon(Icons.search, color: Colors.grey),
         suffixIcon: const Icon(Icons.tune_outlined, color: Colors.grey),
         filled: true,
-        fillColor: Colors.white,
+        fillColor: Theme.of(context).cardColor,
         contentPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 16),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
