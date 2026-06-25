@@ -14,42 +14,72 @@ class BottomNavigation extends StatefulWidget {
 
 class _BottomNavigationState extends State<BottomNavigation> {
   int _currentIndex = 0;
+  late final PageController _pageController;
 
-  static const _screens = [
-    Home(),
-    Info(),
-    Settings(),
-  ];
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  void _onTabTap(int index) {
+    _pageController.animateToPage(
+      index,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
     return Scaffold(
-      body: IndexedStack(
-        index: _currentIndex,
-        children: _screens,
+      body: PageView(
+        controller: _pageController,
+        onPageChanged: (i) => setState(() => _currentIndex = i),
+        children: const [
+          Home(),
+          Info(),
+          Settings(),
+        ],
       ),
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: _currentIndex,
-        onDestinationSelected: (index) => setState(() => _currentIndex = index),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: _onTabTap,
+        type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.white,
-        indicatorColor: AppColors.primary.withAlpha(30),
-        labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
-        destinations: [
-          NavigationDestination(
+        selectedItemColor: AppColors.primary,
+        unselectedItemColor: Colors.black54,
+        elevation: 8,
+        selectedLabelStyle: const TextStyle(
+          fontWeight: FontWeight.w600,
+          fontSize: 12,
+        ),
+        unselectedLabelStyle: const TextStyle(
+          fontWeight: FontWeight.w500,
+          fontSize: 12,
+        ),
+        items: [
+          BottomNavigationBarItem(
             icon: const Icon(Icons.home_outlined),
-            selectedIcon: const Icon(Icons.home, color: AppColors.primary),
+            activeIcon: const Icon(Icons.home),
             label: l10n.navHome,
           ),
-          NavigationDestination(
+          BottomNavigationBarItem(
             icon: const Icon(Icons.info_outline),
-            selectedIcon: const Icon(Icons.info, color: AppColors.primary),
+            activeIcon: const Icon(Icons.info),
             label: l10n.navInfo,
           ),
-          NavigationDestination(
+          BottomNavigationBarItem(
             icon: const Icon(Icons.settings_outlined),
-            selectedIcon: const Icon(Icons.settings, color: AppColors.primary),
+            activeIcon: const Icon(Icons.settings),
             label: l10n.navSettings,
           ),
         ],

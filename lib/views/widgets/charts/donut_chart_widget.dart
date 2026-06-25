@@ -31,7 +31,7 @@ class DonutChartWidget extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          flex: 3,
+          flex: 70,
           child: PieChart(
             PieChartData(
               sections: List.generate(items.length, (i) {
@@ -51,7 +51,7 @@ class DonutChartWidget extends StatelessWidget {
         ),
         const SizedBox(width: 16),
         Expanded(
-          flex: 2,
+          flex: 25,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,

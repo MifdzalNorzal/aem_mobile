@@ -26,66 +26,112 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    final statusBarHeight = MediaQuery.of(context).padding.top;
+    // Cards start here — enough to show the header text, then cards slide over on scroll
+    final contentTopOffset = statusBarHeight + 100.0;
+
+    final header = ScreenHeader(
+      child: Text(
+        l10n.helloAlex,
+        style: const TextStyle(
+          color: Colors.white,
+          fontSize: 26,
+          fontWeight: FontWeight.bold,
+        ),
+        textAlign: TextAlign.center,
+      ),
+    );
 
     return Scaffold(
       backgroundColor: AppColors.background,
-      body: Column(
-        children: [
-          ScreenHeader(
-            child: Text(
-              l10n.helloAlex,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 26,
-                fontWeight: FontWeight.bold,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ),
-          Expanded(
-            child: Consumer<DashboardController>(
-              builder: (context, dashboard, _) {
-                if (dashboard.isLoading) {
-                  return const Center(
+      body: Consumer<DashboardController>(
+        builder: (context, dashboard, _) {
+          if (dashboard.isLoading) {
+            return Column(
+              children: [
+                header,
+                const Expanded(
+                  child: Center(
                     child: CircularProgressIndicator(color: AppColors.primary),
-                  );
-                }
-                if (dashboard.error != null) {
-                  return _ErrorView(
-                    onRetry: () => context.read<DashboardController>().loadDashboard(),
-                  );
-                }
-                final data = dashboard.data;
-                return SingleChildScrollView(
-                  padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
-                  child: Column(
-                    children: [
-                      ChartCard(
-                        title: l10n.statistics,
-                        child: SizedBox(
-                          height: 200,
-                          child: BarChartWidget(
-                            data: data?.chartBar ?? [],
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-                      ChartCard(
-                        title: l10n.distribution,
-                        child: SizedBox(
-                          height: 220,
-                          child: DonutChartWidget(
-                            data: data?.chartDonut ?? [],
-                          ),
-                        ),
-                      ),
-                    ],
                   ),
-                );
-              },
-            ),
-          ),
-        ],
+                ),
+              ],
+            );
+          }
+          if (dashboard.error != null) {
+            return Column(
+              children: [
+                header,
+                Expanded(
+                  child: _ErrorView(
+                    onRetry: () => context.read<DashboardController>().loadDashboard(),
+                  ),
+                ),
+              ],
+            );
+          }
+          final data = dashboard.data;
+          return Stack(
+            children: [
+              // Header sits behind — cards scroll over it
+              header,
+              SingleChildScrollView(
+                child: Column(
+                  children: [
+                    // Transparent spacer so header text is visible at rest
+                    SizedBox(height: contentTopOffset),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(16, 0, 16, 24),
+                      child: Column(
+                        children: [
+                          TweenAnimationBuilder<double>(
+                            tween: Tween(begin: 0.0, end: 1.0),
+                            duration: const Duration(milliseconds: 400),
+                            curve: Curves.easeOut,
+                            builder: (_, v, child) => Opacity(
+                              opacity: v,
+                              child: Transform.translate(
+                                offset: Offset(0, 24 * (1 - v)),
+                                child: child,
+                              ),
+                            ),
+                            child: ChartCard(
+                              title: l10n.statistics,
+                              child: SizedBox(
+                                height: 200,
+                                child: BarChartWidget(data: data?.chartBar ?? []),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 16),
+                          TweenAnimationBuilder<double>(
+                            tween: Tween(begin: 0.0, end: 1.0),
+                            duration: const Duration(milliseconds: 600),
+                            curve: const Interval(0.25, 1.0, curve: Curves.easeOut),
+                            builder: (_, v, child) => Opacity(
+                              opacity: v,
+                              child: Transform.translate(
+                                offset: Offset(0, 24 * (1 - v)),
+                                child: child,
+                              ),
+                            ),
+                            child: ChartCard(
+                              title: l10n.distribution,
+                              child: SizedBox(
+                                height: 220,
+                                child: DonutChartWidget(data: data?.chartDonut ?? []),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          );
+        },
       ),
     );
   }

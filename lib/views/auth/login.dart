@@ -5,7 +5,7 @@ import '../../config/constants.dart';
 import '../../config/extensions/build_context_ext.dart';
 import '../../controllers/auth_controller.dart';
 import '../../views/widgets/app_button.dart';
-// import '../../views/widgets/app_dialog.dart'; // restored when real login is re-enabled
+import '../../views/widgets/app_dialog.dart';
 import '../../views/widgets/app_input_field.dart';
 
 class Login extends StatefulWidget {
@@ -15,14 +15,32 @@ class Login extends StatefulWidget {
   State<Login> createState() => _LoginState();
 }
 
-class _LoginState extends State<Login> {
+class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _obscurePassword = true;
 
+  late final AnimationController _fadeController;
+  late final Animation<double> _fadeAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _fadeController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 600),
+    );
+    _fadeAnimation = CurvedAnimation(
+      parent: _fadeController,
+      curve: Curves.easeOut,
+    );
+    _fadeController.forward();
+  }
+
   @override
   void dispose() {
+    _fadeController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
@@ -31,26 +49,22 @@ class _LoginState extends State<Login> {
   Future<void> _onLogin() async {
     if (!_formKey.currentState!.validate()) return;
 
-    // BYPASS: Remove the next line and uncomment the block below to restore real login
-    Navigator.pushReplacementNamed(context, '/home'); return;
-
-    // --- REAL LOGIN (uncomment to restore) ---
-    // final success = await context.read<AuthController>().login(
-    //   _emailController.text.trim(),
-    //   _passwordController.text,
-    // );
-    // if (!mounted) return;
-    // if (success) {
-    //   Navigator.pushReplacementNamed(context, '/home');
-    // } else {
-    //   final error = context.read<AuthController>().error;
-    //   AppDialog.show(
-    //     context,
-    //     title: context.l10n.loginFailed,
-    //     message: error ?? context.l10n.loginFailedMessage,
-    //     buttonLabel: context.l10n.ok,
-    //   );
-    // }
+    final success = await context.read<AuthController>().login(
+      _emailController.text.trim(),
+      _passwordController.text,
+    );
+    if (!mounted) return;
+    if (success) {
+      Navigator.pushReplacementNamed(context, '/home');
+    } else {
+      final error = context.read<AuthController>().error;
+      AppDialog.show(
+        context,
+        title: context.l10n.loginFailed,
+        message: error ?? context.l10n.loginFailedMessage,
+        buttonLabel: context.l10n.ok,
+      );
+    }
   }
 
   @override
@@ -61,8 +75,10 @@ class _LoginState extends State<Login> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Center(
-          child: SingleChildScrollView(
+        child: FadeTransition(
+          opacity: _fadeAnimation,
+          child: Center(
+            child: SingleChildScrollView(
             padding: const EdgeInsets.symmetric(horizontal: 28),
             child: Form(
               key: _formKey,
@@ -154,6 +170,7 @@ class _LoginState extends State<Login> {
               ),
             ),
           ),
+        ),
         ),
       ),
     );

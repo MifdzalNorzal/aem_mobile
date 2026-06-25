@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../config/color.dart';
@@ -5,7 +6,7 @@ import '../../config/extensions/build_context_ext.dart';
 import '../../controllers/auth_controller.dart';
 import '../../controllers/settings_controller.dart';
 import '../widgets/app_button.dart';
-import '../widgets/profile_header.dart';
+import '../widgets/screen_headers.dart';
 import '../widgets/settings_tile.dart';
 
 class Settings extends StatelessWidget {
@@ -15,14 +16,37 @@ class Settings extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
+    
+
     return Scaffold(
       backgroundColor: AppColors.background,
       body: Column(
         children: [
-          ProfileHeader(
-            name: l10n.profileName,
-            role: l10n.profileRole,
-            avatarUrl: 'https://i.pravatar.cc/150?img=11',
+          ScreenHeader3(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const CircleAvatar(
+                  radius: 50,
+                  backgroundImage: NetworkImage('https://i.pravatar.cc/150?img=11'),
+                  backgroundColor: Colors.transparent,
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  l10n.profileName,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 3),
+                Text(
+                  l10n.profileRole,
+                  style: const TextStyle(color: Colors.white70, fontSize: 13),
+                ),
+              ],
+            ),
           ),
           Expanded(
             child: SingleChildScrollView(
@@ -46,22 +70,22 @@ class Settings extends StatelessWidget {
                           SettingsTile(
                             icon: Icons.notifications_outlined,
                             label: l10n.notifications,
-                            trailing: Switch(
+                            trailing: CupertinoSwitch(
                               value: settings.notificationsEnabled,
                               onChanged: (_) =>
                                   context.read<SettingsController>().toggleNotifications(),
-                              activeColor: AppColors.primary,
+                              activeTrackColor: AppColors.primary,
                             ),
                           ),
                           const _Divider(),
                           SettingsTile(
                             icon: Icons.dark_mode_outlined,
                             label: l10n.darkMode,
-                            trailing: Switch(
+                            trailing: CupertinoSwitch(
                               value: settings.darkModeEnabled,
                               onChanged: (_) =>
                                   context.read<SettingsController>().toggleDarkMode(),
-                              activeColor: AppColors.primary,
+                              activeTrackColor: AppColors.primary,
                             ),
                           ),
                           const _Divider(),

@@ -234,55 +234,55 @@ abstract class AppLocalizations {
 
   /// Fallback department label for employees
   ///
-  /// In en, this message translates to:
+  /// in english, this message translates to:
   /// **'Department'**
   String get defaultDepartment;
 
   /// Fallback role label for employees
   ///
-  /// In en, this message translates to:
+  /// in english, this message translates to:
   /// **'Senior Developer - iOS'**
   String get defaultRole;
 
   /// Hardcoded profile name on settings screen
   ///
-  /// In en, this message translates to:
+  /// in english, this message translates to:
   /// **'Alex Johnson'**
   String get profileName;
 
   /// Hardcoded profile role on settings screen
   ///
-  /// In en, this message translates to:
+  /// in english, this message translates to:
   /// **'Senior Developer'**
   String get profileRole;
 
   /// Settings menu item
   ///
-  /// In en, this message translates to:
+  /// in english, this message translates to:
   /// **'Edit Profile'**
   String get editProfile;
 
   /// Settings toggle label
   ///
-  /// In en, this message translates to:
+  /// in english, this message translates to:
   /// **'Notifications'**
   String get notifications;
 
   /// Settings toggle label
   ///
-  /// In en, this message translates to:
+  /// in english, this message translates to:
   /// **'Dark Mode'**
   String get darkMode;
 
   /// Settings row label for app version
   ///
-  /// In en, this message translates to:
+  /// in english, this message translates to:
   /// **'App Version'**
   String get appVersionLabel;
 
   /// Logout button label
   ///
-  /// In en, this message translates to:
+  /// in english, this message translates to:
   /// **'Log Out'**
   String get logOut;
 
