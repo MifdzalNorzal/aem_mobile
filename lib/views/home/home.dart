@@ -27,7 +27,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     final statusBarHeight = MediaQuery.of(context).padding.top;
-    // Cards start here — enough to show the header text, then cards slide over on scroll
+    
     final contentTopOffset = statusBarHeight + 100.0;
 
     final header = ScreenHeader(
