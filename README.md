@@ -62,6 +62,9 @@ fvm flutter run -d android
 # List all connected devices / simulators
 fvm flutter devices
 
+
+
+
 ### Test Credentials
 
 To login in the login page you must use the following test credentials below:
