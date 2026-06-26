@@ -51,9 +51,7 @@ fvm flutter pub get
 fvm flutter gen-l10n
 
 
-### Running the App
-
-in CLI:
+### Running the App:
 
 # iOS Simulator
 fvm flutter run -d ios
