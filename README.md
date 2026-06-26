@@ -59,11 +59,6 @@ fvm flutter run -d ios
 # Android Emulator
 fvm flutter run -d android
 
-# List all connected devices / simulators
-fvm flutter devices
-
-
-
 
 ### Test Credentials
 
