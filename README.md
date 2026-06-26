@@ -6,7 +6,7 @@ A Flutter mobile application built as a technical assessment for AEM Enersol. Th
 
 ## Features
 
-- **JWT Authentication** — real login flow against `http://test-demo.aemenersol.com/api` with token persistence across sessions
+- **JWT Authentication** — login flow against `http://test-demo.aemenersol.com/api` with token persistence across sessions
 - **Dashboard** — bar chart (statistics) and donut chart (distribution) populated from API data
 - **Employee Directory** — a searchable list of employees from the same dashboard endpoint
 - **Dark Mode** — full system-wide dark theme that occurs after enabling the dark mode toggle
@@ -30,7 +30,7 @@ A Flutter mobile application built as a technical assessment for AEM Enersol. Th
 | Xcode (iOS) | 15+ |
 | Android Studio / SDK | API 21+ |
 
-to Verify your environment:
+To Verify your environment:
 
 in CLI;
 
@@ -64,18 +64,18 @@ fvm flutter devices
 
 ### Test Credentials
 
-to login in the login page must use the following test credentials below:
+To login in the login page you must use the following test credentials below:
 
-Email: user@aemenersol.com
-Password: Test@123
-
+| Email | Password |
+|------|----------------|
+| user@aemenersol.com | Test@123 |
 
 
 ## Architecture
 
 ### Pattern: Provider + ChangeNotifier
 
-The app follows a clean layered architecture using the Provider package for state management. Each layer has a single responsibility:
+The app follows a layered architecture using the Provider package for state management. Each layer has a single responsibility:
 
 ```
 Presentation  (views/)
