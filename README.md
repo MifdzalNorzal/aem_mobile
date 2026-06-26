@@ -44,14 +44,9 @@ fvm flutter pub get
 fvm flutter gen-l10n
 
 
-### Running the App:
+### Running the App on Both iOS & Android Simulator:
 
-# iOS Simulator
-fvm flutter run -d ios
-
-# Android Emulator
-fvm flutter run -d android
-
+fvm flutter run -d <device number> 
 
 ### Test Credentials
 
