@@ -23,10 +23,12 @@ A Flutter mobile application built as a technical assessment for AEM Enersol. Th
 
 ### Prerequisites
 
-Flutter SDK 3.8.1 
-Dart SDK 3.8.1 (bundled with Flutter) 
-Xcode (iOS) 15+ 
-Android Studio / SDK API 21+ 
+| Tool | Minimum Version |
+|------|----------------|
+| Flutter SDK | 3.8.1 |
+| Dart SDK | 3.8.1 (bundled with Flutter) |
+| Xcode (iOS) | 15+ |
+| Android Studio / SDK | API 21+ |
 
 to Verify your environment:
 
