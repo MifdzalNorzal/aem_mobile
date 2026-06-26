@@ -9,6 +9,7 @@ class AppInputField extends StatelessWidget {
   final Widget? suffixIcon;
   final TextInputType? keyboardType;
   final String? Function(String?)? validator;
+  final Color? textColor;
 
   const AppInputField({
     super.key,
@@ -19,6 +20,7 @@ class AppInputField extends StatelessWidget {
     this.suffixIcon,
     this.keyboardType,
     this.validator,
+    this.textColor,
   });
 
   @override
@@ -32,6 +34,7 @@ class AppInputField extends StatelessWidget {
       obscureText: obscureText,
       keyboardType: keyboardType,
       validator: validator,
+      style: TextStyle(color: textColor ?? Theme.of(context).colorScheme.onSurface),
       decoration: InputDecoration(
         hintText: hint,
         hintStyle: const TextStyle(color: AppColors.textGrey, fontSize: 15),

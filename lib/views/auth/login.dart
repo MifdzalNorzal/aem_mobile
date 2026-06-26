@@ -102,6 +102,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                     hint: l10n.emailHint,
                     prefixIcon: Icons.email_outlined,
                     keyboardType: TextInputType.emailAddress,
+                    textColor: AppColors.textDark,
                     validator: (v) {
                       if (v == null || v.isEmpty) return l10n.emailRequired;
                       if (!emailRegex.hasMatch(v.trim())) return l10n.emailInvalid;
@@ -114,6 +115,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                     hint: l10n.passwordHint,
                     prefixIcon: Icons.lock_outline,
                     obscureText: _obscurePassword,
+                    textColor: AppColors.textDark,
                     suffixIcon: IconButton(
                       icon: Icon(
                         _obscurePassword
