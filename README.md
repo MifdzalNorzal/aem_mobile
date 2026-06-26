@@ -1,6 +1,6 @@
 # AEM Enersol Mobile App
 
-A Flutter mobile application built as a technical assessment for AEM Enersol. The app authenticates users against a live REST API and presents an energy analytics dashboard with bar chart statistics, donut chart distribution and an employee directory
+A Flutter mobile application built as a technical assessment for AEM Enersol. The app authenticates users via a live REST API and presents an energy analytics dashboard with bar chart statistics, donut chart distribution and an employee directory
 
 ---
 
