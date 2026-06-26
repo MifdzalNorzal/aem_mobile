@@ -30,13 +30,6 @@ A Flutter mobile application built as a technical assessment for AEM Enersol. Th
 | Xcode (iOS) | 15+ |
 | Android Studio / SDK | API 21+ |
 
-To Verify your environment:
-
-in CLI;
-
-fvm flutter doctor
-
-
 ### Installation
 
 
