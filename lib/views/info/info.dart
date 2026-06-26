@@ -47,7 +47,8 @@ class _InfoState extends State<Info> {
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Column(
         children: [
-          ScreenHeader2(
+          ScreenHeader(
+            height: 120,
             child: _SearchBar(
               controller: _searchController,
               onChanged: (v) => setState(() => _query = v),

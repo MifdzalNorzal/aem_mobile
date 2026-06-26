@@ -22,7 +22,8 @@ class Settings extends StatelessWidget {
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Column(
         children: [
-          ScreenHeader3(
+          ScreenHeader(
+            height: 205,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
